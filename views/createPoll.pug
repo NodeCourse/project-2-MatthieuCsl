@@ -1,0 +1,38 @@
+html
+    head
+        title StrawPollv2
+        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet")
+
+    body
+      nav
+        .nav-wrapper
+          a.brand-logo(href='/' style='padding-left:20px') StrawPollv2
+          ul.right
+            if user
+              li
+                  span #{user.firstname} #{user.lastname}
+              li
+                  a(href='/logout') Logout
+            else
+              
+              li
+                a(href='/login') Connexion
+
+      main.container           
+                h2.card-title Créer un nouveau sondage:
+                  form(method='POST', action='/create')
+                      div
+                        input#title(type='text', placeholder='Question' name='question')
+                      div.form-group
+                        input#description.form-control(type='text', placeholder='Description' name='description')
+                      div.form-group
+                        input.form-control(type='text', placeholder='First Answer' name='answer1')
+                      div.form-group
+                        input.form-control(type='text', placeholder='Second Answer' name='answer2')
+                      div
+                        button.waves-effect.waves-light.btn(type='submit', name='forward') Créer le sondage
+                        
+                            
+          

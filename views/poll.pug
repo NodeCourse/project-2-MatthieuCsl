@@ -1,0 +1,31 @@
+html
+    head
+        title StrawPollv2
+        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet")
+
+    body
+      nav
+        .nav-wrapper
+          a.brand-logo(href='/' style='padding-left:20px') StrawPollv2
+          ul.right
+            if user
+              li
+                  span #{user.firstname} #{user.lastname}
+              li
+                  a(href='/logout') Logout
+            else
+              
+              li
+                a(href='/login') Connexion
+
+      main.container
+            h3 #{poll.question}
+            p #{poll.description}
+            .row
+            for answer in poll.answers
+                    input(id='answer_' + answer.id, type='radio', name='answer', value=answer.id)
+                      strong #{answer.answer}
+                      p #{answer.description}
+                        button.waves-effect.waves-light.btn(type='button', name='forward') Valider

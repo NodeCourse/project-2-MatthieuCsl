@@ -1,0 +1,35 @@
+html
+    head
+        title StrawPollv2
+        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet")
+
+    body
+      nav
+        .nav-wrapper
+          a.brand-logo(href='/' style='padding-left:20px') StrawPollv2
+          ul.right
+            if user
+              li
+                  span #{user.firstname} #{user.lastname}
+              li
+                  a(href='/logout') Logout
+            else
+              
+              li
+                a(href='/login') Connexion
+
+      main.container
+        h3 Connexion
+        .row 
+          form(method="post", action='/login')
+            div.form-group
+              input.form-control(type='email', placeholder='name@email.com' name='username')
+            div.form-group
+              input.form-control(type='password', placeholder='password' name='password')
+            div
+              button.waves-effect.waves-light.btn(type='submit' name='login') Sign in  
+          hr
+          p Pas encore de compte ? 
+              a(href='/register') Créer un compte

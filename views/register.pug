@@ -1,0 +1,39 @@
+html
+    head
+        title StrawPollv2
+        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet")
+
+    body
+      nav
+        .nav-wrapper
+          a.brand-logo(href='/' style='padding-left:20px') StrawPollv2
+          ul.right
+            if user
+              li
+                  span #{user.firstname} #{user.lastname}
+              li
+                  a(href='/logout') Logout
+            else
+              
+              li
+                a(href='/login') Connexion
+
+      main.container
+          h3 Créer un compte
+          .row
+              form(method='POST', action='/register')
+                  .form-group
+                    input.form-control(type='text', name='firstname', placeholder='Name', required)
+                  .form-group
+                    input.form-control(type='text', name='lastname', placeholder='Lastname', required)
+                  .form-group
+                    input.form-control(type='email', name='email', placeholder='name@email.com', required)
+                  .form-group
+                    input.form-control(type='password', name='password', placeholder='password', required)
+                  .form-group
+                    button.waves-effect.waves-light.btn(type='submit', name='register') Valider
+              hr
+              p Vous avez déjà un compte ? 
+                  a(href='/login') Connexion

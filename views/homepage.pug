@@ -1,0 +1,37 @@
+html
+    head
+        title StrawPollv2
+        link(rel="stylesheet", href="/css/styles.css")
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0-beta/css/materialize.min.css")
+        link(href="https://fonts.googleapis.com/css?family=Orbitron" rel="stylesheet")
+
+    body
+      nav
+        .nav-wrapper
+          a.brand-logo(href='/' style='padding-left:20px') StrawPollv2
+          ul.right
+            if user
+              li
+                  span #{user.firstname} #{user.lastname}
+              li
+                  a(href='/logout') Logout
+            else
+              
+              li
+                a(href='/login') Connexion
+
+      main.container
+        h3 Bienvenu
+        p Créez ou venez découvrir les sondages précedement crées par nos utilisateurs.
+          
+        a(href='/create') Créer un sondage
+              
+        p Derniers sondages publiés :          
+        for poll in polls
+          .row
+                article#card-reducer.card
+                  div#titleCard.card-title
+                    a(href='/poll/' + poll.id)
+                      strong #{poll.question}
+                        div.card-content
+                          p#descriptionCard #{poll.description}                
